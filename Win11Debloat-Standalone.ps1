@@ -8,11 +8,52 @@
     A consolidated, single-file version of Win11Debloat that removes bloatware, 
     disables telemetry, and declutters Windows 11/10.
     
-    All configuration options are at the top of this script for easy customization.
+    This standalone script contains ALL features from the original Win11Debloat project,
+    with easy-to-configure sections at the top for customizing:
+    - Which apps to remove (150+ apps organized by category)
+    - Registry tweaks and policies (20+ options)
+    - Feature toggles and execution modes
+    
+    All external dependencies (registry files, app lists, menus) are embedded directly
+    in this script. No other files are needed!
+    
+.PARAMETER RunDefaults
+    Run with default recommended settings without prompting
+    
+.PARAMETER RunAppConfigurator
+    Open the app selection GUI to customize which apps to remove
+    
+.PARAMETER Sysprep
+    Run in Sysprep mode to apply changes to the default user profile
+    
+.PARAMETER Silent
+    Run without user prompts (for automated deployments)
+    
+.EXAMPLE
+    .\Win11Debloat-Standalone.ps1
+    Runs the script in interactive mode with menu
+    
+.EXAMPLE
+    .\Win11Debloat-Standalone.ps1 -RunDefaults
+    Applies the default recommended settings automatically
+    
+.EXAMPLE
+    .\Win11Debloat-Standalone.ps1 -RemoveApps -DisableTelemetry
+    Removes bloatware apps and disables telemetry
+    
+.EXAMPLE
+    .\Win11Debloat-Standalone.ps1 -RunAppConfigurator
+    Opens GUI to select specific apps to remove
     
 .NOTES
     Author: Win11Debloat Project (Standalone Edition)
     Version: Standalone 1.0
+    Requires: PowerShell running as Administrator
+    
+    To customize default behavior:
+    1. Edit the $global:AppConfig section (starts around line 119)
+    2. Edit the $global:PolicyConfig section (starts around line 268)
+    3. Save and run the script
     
 .LINK
     https://github.com/Raphire/Win11Debloat
