@@ -1959,6 +1959,23 @@ function AwaitKeyToExit {
 }
 
 
+##################################################################################################################
+#                                                                                                                #
+#                                          SCRIPT START                                                          #
+#                                                                                                                #
+##################################################################################################################
+
+
+# Show error if current powershell environment does not have LanguageMode set to FullLanguage 
+if ($ExecutionContext.SessionState.LanguageMode -ne "FullLanguage") {
+    Write-Host "Error: Win11Debloat is unable to run on your system, powershell execution is restricted by security policies" -ForegroundColor Red
+    Write-Output ""
+    Write-Output "Press enter to exit..."
+    Read-Host | Out-Null
+    Exit
+}
+
+
 # Check if winget is installed & if it is, check if the version is at least v1.4
 if ((Get-AppxPackage -Name "*Microsoft.DesktopAppInstaller*") -and ((winget -v) -replace 'v','' -gt 1.4)) {
     $global:wingetInstalled = $true
