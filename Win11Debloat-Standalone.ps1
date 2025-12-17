@@ -1958,12 +1958,6 @@ function AwaitKeyToExit {
     }
 }
 
-    Write-Output ""
-    Write-Output "Press enter to exit..."
-    Read-Host | Out-Null
-    Exit
-}
-
 
 # Check if winget is installed & if it is, check if the version is at least v1.4
 if ((Get-AppxPackage -Name "*Microsoft.DesktopAppInstaller*") -and ((winget -v) -replace 'v','' -gt 1.4)) {
@@ -2662,7 +2656,7 @@ else {
             continue
         }
         {$_ -in "HideMusic", "DisableMusic"} {
-            RegImport "> Hiding the music folder from the File Explorer navigation pane..." "Hide_Music_folder"
+            RegImport "> Hiding the music folder from the File Explorer navigation pane..." "Hide_Music_Folder"
             continue
         }
         {$_ -in "HideIncludeInLibrary", "DisableIncludeInLibrary"} {
